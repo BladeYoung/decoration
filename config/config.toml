@@ -1,0 +1,43 @@
+base-url = ""
+
+# HTTP Server
+[server]
+	Address     = ":8199"
+	ServerRoot  = "public"
+	ServerAgent = "gf-app"
+	LogPath     = "/tmp/log/gf-app/server"
+
+# Logger.
+[logger]
+    Path        = "/tmp/log/gf-app"
+    Level       = "all"
+    Stdout      = true
+
+# Template.
+[viewer]
+    Path        = "template"
+    DefaultFile = "index.html"
+    Delimiters  =  ["${", "}"]
+
+# Database.
+[database]
+    link  = "mysql:root:mysql.032072@tcp(127.0.0.1:3306)/test"
+    debug = true
+    # Database logger.
+    [database.logger]
+        Path   = "/tmp/log/gf-app/sql"
+        Level  = "all"
+        Stdout = true
+# Redis数据库配置
+[redis]
+    default = "127.0.0.1:6379,root"
+
+#jwt配置
+[gToken]
+    CacheMode = 2
+    Timeout = 0
+    MaxRefresh = 0
+    TokenDelimiter="_"
+    EncryptKey = "koi29a83idakguqjq29asd9asd8a7jhq"
+    AuthFailMsg = "登录超时，请重新登录"
+    MultiLogin = true
